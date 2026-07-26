@@ -20,12 +20,12 @@ Brain-computer interfaces heavily rely on EEG signals, which are highly suscepti
 ### 1. PyTorch Deep Learning Model
 - **Preprocessing:** Applied Euclidean Alignment (EA) to whiten multi-subject data and strictly mitigate domain-shift signatures.
 - **Model:** `EEGNet` (Depthwise Convolutional Architecture).
-- **Defense:** Alignment-Based Adversarial Training (ABAT) utilizing a Stackelberg game formulation, enforcing temporal (Total Variation) and spectral (Power Spectral Density) constraints.
+- **Defense:** Alignment-Based Adversarial Training (ABAT) utilizing a Stackelberg game formulation, enforcing the L∞ constraint.
 - **Compression:** Knowledge Distilled student weights for high-throughput edge deployment.
 
 ### 2. FastAPI Backend (`/fanplay-iot-fan-neuro/backend`)
 - **Data Ingestion:** Asynchronous parsing of raw 8-channel `.edf` files using `mne-python`.
-- **Mathematical Processing:** Real-time per-channel Z-score normalization matching the exact parameters of the Stackelberg adversarial training environment.
+- **Mathematical Processing:** Real-time per-channel Z-score normalization matching the exact parameters of the adversarial training environment.
 - **Feature Extraction:** Welch's Power Spectral Density (`scipy.signal.welch`) isolates Delta, Theta, Alpha, Beta, and Gamma brainwave bands.
 - **Hardware Diagnostics:** Automated Signal-to-Noise Ratio (SNR) calculated in decibels to evaluate electrode contact quality.
 
@@ -67,4 +67,4 @@ The dashboard will be available at `http://localhost:5173`.
 
 ## 👥 Authors
 - **Advait Sandeep Raut** - *Software Engineering & Full-Stack MLOps Pipeline*
-- **Pratham Sudheer Hegde** - *PyTorch Stackelberg Adversarial Research*
+- **Pratham Sudheer Hegde** - *PyTorch Adversarial Training Research and signal preprocessing*
