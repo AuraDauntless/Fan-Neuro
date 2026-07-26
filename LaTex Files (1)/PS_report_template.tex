@@ -1,0 +1,266 @@
+\documentclass[10pt,a4paper,openright]{report}
+
+\usepackage[a4paper,top=0.82in,bottom=0.78in,left=0.78in,right=0.78in]{geometry}
+\usepackage{amsmath,amssymb}
+\usepackage{booktabs,tabularx,array,multirow,longtable}
+\usepackage{graphicx}
+\usepackage{enumitem}
+\usepackage{microtype}
+\usepackage{setspace}
+\usepackage{titlesec}
+\usepackage{fancyhdr}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{hyperref}
+\usepackage{float}
+\usepackage{xcolor}
+\usepackage{tikz}
+\usepackage{listings}
+\usetikzlibrary{arrows.meta,positioning}
+
+\hypersetup{hidelinks}
+\setstretch{1.04}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{4pt}
+\setlist{leftmargin=1.5em,itemsep=2pt,topsep=3pt}
+\setcounter{tocdepth}{1}
+\setcounter{secnumdepth}{2}
+
+\titleformat{\chapter}[display]
+  {\normalfont\large\bfseries}
+  {Chapter \thechapter}
+  {1.2ex}
+  {\Large\bfseries}
+\titlespacing*{\chapter}{0pt}{22pt}{18pt}
+\titleformat{\section}{\normalfont\normalsize\bfseries}{\thesection}{0.55em}{}
+\titleformat{\subsection}{\normalfont\normalsize\bfseries}{\thesubsection}{0.5em}{}
+\titlespacing*{\section}{0pt}{9pt}{4pt}
+\titlespacing*{\subsection}{0pt}{7pt}{3pt}
+
+\pagestyle{plain}
+\fancyhf{}
+\fancyfoot[C]{\thepage}
+\renewcommand{\headrulewidth}{0pt}
+
+\newcommand{\projecttitle}{Stackelberg Based Adversarial Training for Robust EEG-Based BCI Classification and Full-Stack Deployment}
+
+\begin{document}
+\setcounter{page}{1}
+
+% -----------------------------------------------------------------------------
+% PAGE 1: TITLE PAGE
+% -----------------------------------------------------------------------------
+\begin{titlepage}
+\thispagestyle{empty}
+\centering
+\vspace*{0.1cm}
+{\small\bfseries A REPORT\par}
+\vspace{0.2cm}
+{\small\bfseries ON\par}
+\vspace{0.3cm}
+{\large\bfseries \MakeUppercase{\projecttitle}\par}
+\vspace{1.0cm}
+{\small\bfseries BY\par}
+\vspace{0.7cm}
+
+\renewcommand{\arraystretch}{1.25}
+\begin{tabular}{>{\raggedright\arraybackslash}p{0.31\textwidth}
+                >{\centering\arraybackslash}p{0.22\textwidth}
+                >{\raggedright\arraybackslash}p{0.35\textwidth}}
+\textbf{Name of the student} & \textbf{ID No.} & \textbf{Discipline} \\
+Advait Sandeep Raut & 2024A7PS0578G & B.E. Computer Science and Engineering
+\end{tabular}
+
+\vfill
+Prepared in partial fulfillment of the requirements of the\\[0.1cm]
+{\bfseries Practice School - I}
+\vspace{0.55cm}
+
+{\bfseries AT}\\[0.25cm]
+{\large\bfseries FanPlay IOT}
+\vspace{0.38cm}
+
+A Practice School - I Station of\\[0.3cm]
+
+\includegraphics[width=2.05cm]{logo.eps} 
+\vspace{0.15cm}
+
+{\small\bfseries BIRLA INSTITUTE OF TECHNOLOGY \& SCIENCE, PILANI}\par
+\vspace{0.28cm}
+June, 2026
+\end{titlepage}
+\setcounter{page}{2}
+
+% -----------------------------------------------------------------------------
+% PAGE 2: PROJECT INFORMATION
+% -----------------------------------------------------------------------------
+\thispagestyle{empty}
+\begin{center}
+{\small\bfseries BIRLA INSTITUTE OF TECHNOLOGY \& SCIENCE, PILANI}\\[-1pt]
+{\small Practice School Division}
+\end{center}
+\vspace{0.2cm}
+
+\small
+\renewcommand{\arraystretch}{1.17}
+\begin{tabularx}{\textwidth}{>{\bfseries}p{0.28\textwidth} X}
+Station Centre: & FanPlay IOT \\
+Duration: & 25th May 2026 -- 22nd June 2026 \\
+Date of submission: & 22nd June 2026 \\
+Title of the project: & \projecttitle \\
+ID No., Name and Discipline: & 2024A7PS0578G, Advait Sandeep Raut, B.E. Computer Science and Engineering \\
+Name of the expert: & Purnima Prashant \\
+Name of the PS faculty member: & Vinaya Kumar N \\
+Key words: & EEG, BCI, Stackelberg Games, Adversarial Training, EEGNet, Robustness, Kurtosis, FastAPI, React, MLOps \\
+Project area: & Machine Learning, Signal Processing, BCI Classification, Web Development \\
+\end{tabularx}
+
+\vspace{0.12cm}
+\textbf{Abstract:}\\
+Brain-computer interfaces heavily rely on EEG signals, which are highly susceptible to adversarial perturbations. This project explores the unique challenges of EEG signal analysis, including channel shortlisting, data skewness, and adversarial vulnerabilities. We implemented a Stackelberg leader-follower adversarial training framework using EEGNet to enhance robustness against physiological attacks. Furthermore, this project bridges the gap to production by developing a high-performance Python FastAPI backend for clinical `.edf` ingestion, executing real-time Welch's PSD and SNR metrics, and visualizing the inference in an immersive, custom-built React web application.
+
+\vfill
+\begin{tabularx}{\textwidth}{X X}
+\textbf{Signature of the student:} & \textbf{Signature of the PS faculty member:} \\[0.75cm]
+Date: 22nd June 2026 & Date: 22nd June 2026
+\end{tabularx}
+\normalsize
+\clearpage
+
+% -----------------------------------------------------------------------------
+% ACKNOWLEDGEMENTS
+% -----------------------------------------------------------------------------
+\chapter*{Acknowledgements}
+\addcontentsline{toc}{chapter}{Acknowledgements}
+\par\noindent
+I extend my deepest gratitude to my Practice School faculty mentor, Vinaya Kumar N, for his continuous guidance, technical insights, and steadfast support throughout the duration of this project.
+
+\par\noindent
+I am also incredibly thankful to my industry expert, Purnima Prashant, for providing me with the opportunity to explore the intersection of deep learning and neurotechnology at FanPlay IOT. Working on adversarial robustness for brain-computer interfaces has been an immensely enriching experience that has significantly broadened my understanding of signal processing and machine learning security.
+
+\par\noindent
+Additionally, I would like to extend a special thanks to the open-source communities behind FastAPI, React, and SciPy. The relentless pursuit of robust software engineering and high-performance system design is what makes bridging the gap between theoretical machine learning and consumer-facing applications possible.
+
+\vfill
+\hfill\textbf{Advait Sandeep Raut}
+\clearpage
+
+\tableofcontents
+\clearpage
+
+% -----------------------------------------------------------------------------
+% PART I: ADVERSARIAL TRAINING
+% -----------------------------------------------------------------------------
+\chapter{Introduction}
+
+A Brain-Computer Interface (BCI) establishes a direct communication pathway between the human brain and an external device. Among various modalities, Electroencephalography (EEG) is predominantly utilized due to its non-invasive nature, low cost, and ease of deployment. EEG records electrical activity from the scalp and has profound applications spanning from medical diagnostics to interactive cognitive load monitoring.
+
+Despite its advantages, building robust deep learning models for EEG analysis poses significant challenges. EEG data is intrinsically noisy, highly skewed, and sensitive to subject-specific variations like skull thickness and electrode impedance. Furthermore, deploying these models in real-world BCI systems exposes them to adversarial attacks [4]. In an adversarial attack, microscopic, meticulously crafted noise is added to the input signal to maliciously alter the model’s prediction. Such vulnerabilities can range from causing minor user frustration to precipitating life-threatening situations in critical healthcare environments.
+
+The primary objective of this project was to architect a neural network capable of monitoring cognitive strain while remaining robust against adversarial manipulations. To achieve this, we employed a Stackelberg game-theoretic approach to adversarial training [1], specifically tailored to accommodate the unique physiological properties of EEG signals.
+
+\chapter{Challenges in EEG Signal Analysis}
+
+\section{Channel Shortlisting and Dataset Selection}
+Deploying a commercial BCI product with an excessive number of channels is completely impractical. Through deep literature review regarding the significance of different brain regions during cognitive strain, we determined the most relevant channels and shortlisted eight specific electrodes for our use case: F1, F2, Fz, P1, P2, Pz, O1, and O2.
+
+Subsequently, we faced the challenge of selecting appropriate datasets. We sourced accredited Physionet datasets containing recordings from non-diagnosed individuals that precisely included our shortlisted channels. Utilizing untrimmed versions of these datasets ensured that our models were trained on comprehensive data, thereby improving the authenticity of our classification accuracy.
+
+\section{Data Skewness and Preprocessing}
+A prevalent issue with EEG datasets is their inherent skewness. Artificially forcing the data into a Gaussian distribution can distort the underlying physiological markers. To mitigate this, we evaluated datasets based on their Kurtosis (a measure of tailedness) to select those that naturally approximated an Independent and Identically Distributed (I.I.D.) Gaussian profile.
+
+Furthermore, merging multiple binary-class datasets introduces significant domain-shift noise caused by individual physiological differences (e.g., scalp conductivity, session-to-session impedance). To resolve this, we applied Euclidean Alignment (EA). By whitening the data for each subject or session such that the average spatial covariance aligns with the identity matrix, EA effectively strips away subject-specific ``signatures.'' This leaves behind a normalized signal that is highly comparable across different domains.
+
+\section{Class Selection}
+Initially, we hypothesized a 3-class output (Active, Inactive, Dormant). However, we realized that the selected datasets inherently supported binary classification. Consequently, we tailored the initial model for 2 classes, paving the way for a finalized operational model that can subsequently accommodate a 3-output layer.
+
+\chapter{Methodology}
+
+\section{Model Architecture: Mitigating Overfitting}
+Given the typically small sample sizes in EEG datasets relative to image datasets, neural networks are at an exceedingly high risk of overfitting. Parameter efficiency is therefore critical. Standard 2D Convolutions mix all electrode channels simultaneously from the start, generating an excessive number of parameters.
+
+To counter this, we utilized EEGNet [2], a compact architecture that employs Depthwise Convolutions. By applying a separate filter to each channel independently and subsequently mixing them using a pointwise ($1 \times 1$) convolution, EEGNet drastically reduces the parameter count while effectively learning both spatial and temporal features.
+
+\section{Stackelberg Adversarial Training Setup}
+Standard adversarial training methodologies often rely solely on an $L_\infty$ norm constraint ($||\delta|| < \epsilon$). However, we adopted a much more rigorous approach to generate proper EEG-specific adversarial attacks, ensuring the model trains robustly against physiologically plausible threats. Our Stackelberg leader-follower framework incorporated the following constraints for the adversary:
+\begin{itemize}
+\item \textbf{$L_\infty$ Bound ($||\delta|| < \epsilon$):} Standard constraint bounding the absolute magnitude of the noise.
+\item \textbf{Signal-to-Noise Ratio ($SNR(x, \delta) \geq \gamma$):} Ensures the adversarial perturbation does not completely drown out the original biological EEG signal.
+\item \textbf{Total Variation ($TV(\delta) \leq \tau$):} Enforces temporal smoothness. EEG signals do not jump randomly between consecutive samples; thus, the perturbation must be temporally coherent.
+\item \textbf{Power Spectral Density ($D_{PSD}(x, x + \delta) \leq \kappa_{psd}$):} Arguably the most critical constraint for EEG. Brain signals are richly characterized in the frequency domain ($\alpha, \beta, \gamma, \delta, \theta$). An attack that wildly distorts this spectral profile would be physiologically impossible.
+\end{itemize}
+During training, the EEGNet acts as the Stackelberg leader, minimizing its loss against the optimal constrained perturbation generated by the follower.
+
+\chapter{Results and Discussion}
+Due to the imbalanced nature of our datasets, standard accuracy is an insufficient metric. We evaluated our models using Balanced Accuracy (bACC), along with Clean Accuracy ($A_{clean}$) and Robust Accuracy ($A_{rob}$).
+
+Our experimental evaluations demonstrated that the Stackelberg-trained EEGNet consistently outperformed the baseline, undefended EEGNet when subjected to Projected Gradient Descent (PGD) [3] type adversarial attacks. The robustness gains were evident across various perturbation budgets ($\epsilon$). The only exception occurred when the noise value of the evaluative PGD attack was scaled to five times greater than the noise magnitude used during training, at which point the attack naturally overpowered the defense.
+
+Overall, incorporating temporal (TV) and spectral (PSD) constraints into the Stackelberg framework yielded a classifier that was demonstrably more resilient to realistic EEG perturbations.
+
+\chapter{Transition to Deployment}
+This project successfully highlighted the vulnerabilities of EEG-based BCI systems and demonstrated the efficacy of Stackelberg adversarial training in mitigating these risks. By meticulously curating channels, employing Euclidean alignment, and utilizing a parameter-efficient EEGNet architecture, we established a strong foundation for cognitive state classification.
+
+Moving forward, deploying the entire model directly is impractical due to the computational complexity of calculating inference on edge devices. Therefore, future work will focus heavily on compressing the model. We plan to utilize advanced compression techniques, specifically structured pruning or knowledge distillation, to create a streamlined, deployable model that retains the hard-earned adversarial robustness.
+
+% -----------------------------------------------------------------------------
+% PART II: FULL STACK DEPLOYMENT
+% -----------------------------------------------------------------------------
+\chapter{Knowledge Distillation and Backend Infrastructure}
+
+\section{From Research to Production}
+While adversarial training environments such as Google Colab are optimal for iterative mathematical modeling, they are disconnected from end-user utility. To operationalize the research, everything downstream of the offline model training—specifically the MLOps deployment pipeline, server-side data ingestion, live signal processing, and frontend visualization—was engineered from the ground up in this secondary phase of the project.
+
+\section{Backend Architecture and Data Ingestion}
+The server was built using **FastAPI**, an asynchronous Python web framework chosen for its native PyTorch integration and high throughput. An endpoint `/api/upload-edf` was created utilizing `python-multipart` to accept raw clinical binary `.edf` files. The **MNE-Python** library (`mne.io.read_raw_edf`) parses the 8-channel EEG data. The raw continuous signal is mathematically chunked into 2-second windows using explicit NumPy array slicing (512 samples at a 256 Hz sampling frequency). This specific dimensionality is strictly enforced to match the input tensor shape `(N, 1, C, T)` expected by the pre-trained EEGNet architecture.
+
+\section{Model Deserialization and Inference}
+The backend natively integrates the pre-trained knowledge-distilled student weights (`_student_kd.pt`). By utilizing `torch.load` with `weights_only=False`, the application extracts the nested `model_kwargs` dictionary to dynamically configure the EEGNet class (e.g., $F_1=4, D=1, F_2=8$, dropout$=0.25$) before executing `model.load_state_dict()`. Inference is performed within a `torch.no_grad()` context block for optimal memory efficiency, transforming logits into probabilities to classify the chunk as "Active" or "Dormant".
+
+\chapter{Real-Time Signal Processing}
+
+\section{Z-Score Normalization}
+To guarantee that the neural network receives data identically to its training environment, a custom per-channel Z-score normalization was implemented across the time axis for every chunk:
+\begin{equation}
+\widetilde{x}_{c,t} = \frac{x_{c,t} - \mu_c}{\max(\sigma_c, 10^{-6})}
+\end{equation}
+The lower bound of $10^{-6}$ prevents catastrophic division-by-zero errors in instances of flatline channel data.
+
+\section{Power Spectral Density (PSD) Extraction}
+Using `scipy.signal.welch`, the raw time-series data undergoes frequency-domain transformation with `nperseg=256`. The relative power is mathematically aggregated across five standard physiological bandwidths (Delta: 1-4 Hz, Theta: 4-8 Hz, Alpha: 8-12 Hz, Beta: 12-30 Hz, Gamma: 30-100 Hz). The algorithm then identifies the dominant wave by evaluating $\arg\max$ across the computed band powers.
+
+\section{Signal-to-Noise Ratio (SNR) Calculation}
+An automated diagnostic metric was engineered to evaluate hardware contact quality. The SNR in decibels (dB) is computed by comparing the integrated power of the physiological signal (1-50 Hz) against out-of-band high-frequency noise ($>100$ Hz):
+\begin{equation}
+\text{SNR (dB)} = 10 \log_{10} \left( \frac{\sum_{f=1}^{50} P(f)}{\sum_{f=100}^{f_{Nyquist}} P(f) + 10^{-9}} \right)
+\end{equation}
+
+\chapter{Full-Stack Web Application}
+
+\section{Frontend Development and UI Engineering}
+The frontend was engineered using **React 18** and **Vite** without relying on heavy external component libraries. It utilizes bespoke Vanilla CSS to achieve a premium "electric" dark-mode aesthetic with deep slate backgrounds (`#0f172a`), neon yellow (`#FACC15`), and vibrant blue (`#38bdf8`) accents. 
+
+State management is handled via React's `useState` hooks, orchestrating primary data structures (`timelineData`, `brainwaveData`, `histogramData`) derived from the backend JSON payload. The dashboard incorporates the following core Recharts modules:
+\begin{enumerate}
+\item \textbf{Cognitive State Timeline:} A highly customized `AreaChart` applying SVG `<linearGradient>` definitions to visualize the `focusLevel` fluctuating over time. A `CustomTooltip` component intercepts hover events to simultaneously display Time, Focus percentage, Dominant Wave, and SNR for pinpoint analysis.
+\item \textbf{Brainwave Distribution:} A `PieChart` mapping the five frequency bands to designated HEX colors to visualize the aggregate temporal breakdown of physiological states.
+\item \textbf{Active vs. Dormant Histogram:} A `BarChart` explicitly graphing the total binary classification volume of the model across the entire session.
+\end{enumerate}
+
+\chapter{Final Deployment Results and Conclusion}
+The deployment of the FanPlay Neuro web platform successfully translated raw, dense biometric telemetry into an intuitive, high-performance executive dashboard. The FastAPI architecture processes standard clinical `.edf` files, executes the nested Welch PSD calculations, applies Z-score matrices, and runs the PyTorch inference loop on the CPU, returning the full JSON timeline array to the client in milliseconds. 
+
+This project represents the successful completion of an end-to-end MLOps deployment pipeline. By intricately weaving MNE-Python file ingestion, strict NumPy mathematical standardizations, Scipy frequency-domain signal processing, dynamic PyTorch neural network inference, and highly interactive React/Recharts data visualizations, a static academic machine learning model was elevated into a robust, living platform capable of intuitively decoding human cognitive engagement.
+
+\begin{thebibliography}{99}
+\bibitem{gao}
+R. Gao et al. Stackelberg adversarial training for robustness. \emph{International Conference on Machine Learning}, 2022.
+\bibitem{lawhern}
+V. J. Lawhern et al. EEGNet: a compact convolutional neural network for eeg-based brain-computer interfaces. \emph{Journal of Neural Engineering}, 2018.
+\bibitem{madry}
+A. Madry et al. Towards deep learning models resistant to adversarial attacks. \emph{International Conference on Learning Representations}, 2018.
+\bibitem{zhang}
+X. Zhang and D. Wu. On the vulnerability of cnn classifiers in eeg-based bcis. \emph{IEEE Transactions on Neural Systems and Rehabilitation Engineering}, 2019.
+\end{thebibliography}
+
+\end{document}

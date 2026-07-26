@@ -1,0 +1,66 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+    --primary: 48 96% 53%; /* Electric Yellow */
+    --primary-foreground: 222.2 47.4% 11.2%;
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 48 96% 53%;
+    --radius: 0.5rem;
+  }
+
+  body {
+    @apply bg-[#0B0F19] text-white antialiased overflow-x-hidden;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  }
+}
+
+@layer components {
+  .glass-panel {
+    @apply bg-slate-900/60 backdrop-blur-md border border-slate-800 rounded-xl shadow-2xl;
+  }
+  
+  .glass-button {
+    @apply bg-slate-800/80 hover:bg-slate-700 text-white font-medium py-2 px-4 rounded-lg transition-all duration-200 border border-slate-700 hover:border-slate-600;
+  }
+  
+  .primary-button {
+    @apply bg-[#FACC15] hover:bg-yellow-300 text-slate-900 font-bold py-2 px-6 rounded-lg shadow-[0_0_15px_rgba(250,204,21,0.3)] hover:shadow-[0_0_25px_rgba(250,204,21,0.5)] transition-all duration-200 transform hover:-translate-y-0.5;
+  }
+}
+
+/* Animations */
+@keyframes pulse-slow {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.8; transform: scale(1.05); }
+}
+
+.animate-pulse-slow {
+  animation: pulse-slow 3s ease-in-out infinite;
+}
+
+@keyframes flash-active {
+  0%, 100% { box-shadow: 0 0 10px rgba(250, 204, 21, 0.4); }
+  50% { box-shadow: 0 0 25px rgba(250, 204, 21, 0.8); }
+}
+
+.glow-active {
+  animation: flash-active 2s infinite;
+}
