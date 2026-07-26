@@ -66,4 +66,4 @@ The dashboard will be available at `http://localhost:5173`.
 
 ## 👥 Authors
 - **Advait Sandeep Raut** - *Software Engineering & Full-Stack MLOps Pipeline*
-- **Pratham** - *PyTorch Stackelberg Adversarial Research*
+- **Pratham Sudheer Hegde** - *PyTorch Stackelberg Adversarial Research*
