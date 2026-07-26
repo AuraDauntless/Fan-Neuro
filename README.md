@@ -20,7 +20,7 @@ Brain-computer interfaces heavily rely on EEG signals, which are highly suscepti
 ### 1. PyTorch Deep Learning Model
 - **Preprocessing:** Applied Euclidean Alignment (EA) to whiten multi-subject data and strictly mitigate domain-shift signatures.
 - **Model:** `EEGNet` (Depthwise Convolutional Architecture).
-- **Defense:** Alignment-Based Adversarial Training (ABAT) utilizing a Stackelberg game formulation, enforcing the L∞ constraint.
+- **Defense:** Alignment-Based Adversarial Training (ABAT) utilizing a minimax game theoretic formulation, enforcing the L∞ constraint.
 - **Compression:** Knowledge Distilled student weights for high-throughput edge deployment.
 
 ### 2. FastAPI Backend (`/fanplay-iot-fan-neuro/backend`)
@@ -63,7 +63,7 @@ The dashboard will be available at `http://localhost:5173`.
 ---
 
 ## 📄 Documentation & Reports
-- The finalized academic LaTeX reports detailing the Stackelberg algorithms, Knowledge Distillation, and Full-Stack Engineering can be found in the `LaTex Files (1)` directory.
+- The finalized academic LaTeX reports detailing the Adversarial Training algorithms, Game Theoretic formulation, Knowledge Distillation, and Full-Stack Engineering can be found in the `LaTex Files (1)` directory.
 
 ## 👥 Authors
 - **Advait Sandeep Raut** - *Software Engineering & Full-Stack MLOps Pipeline*
