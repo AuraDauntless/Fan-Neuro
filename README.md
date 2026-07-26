@@ -12,14 +12,15 @@ An end-to-end Machine Learning Operations (MLOps) pipeline and consumer-facing w
 
 Brain-computer interfaces heavily rely on EEG signals, which are highly susceptible to adversarial perturbations. This project is split into two primary paradigms:
 
-1. **Adversarial Robustness Research:** Implementing a Stackelberg leader-follower adversarial training framework using a parameter-efficient `EEGNet` architecture to enhance robustness against physiological attacks.
+1. **Adversarial Robustness Research:** Implementing an Alignment-Based Adversarial Training (ABAT) framework, utilizing Euclidean Alignment (EA) to mitigate inter-subject domain shift, and deploying a Stackelberg leader-follower game using the parameter-efficient `EEGNet` architecture to enhance robustness against physiological attacks.
 2. **Full-Stack Deployment:** A comprehensive web architecture designed to natively ingest clinical `.edf` (European Data Format) files, replicate training data normalizations, execute frequency-domain signal processing, and visualize inferences via a premium React dashboard.
 
 ## 🏗️ Architecture
 
 ### 1. PyTorch Deep Learning Model
+- **Preprocessing:** Applied Euclidean Alignment (EA) to whiten multi-subject data and strictly mitigate domain-shift signatures.
 - **Model:** `EEGNet` (Depthwise Convolutional Architecture).
-- **Defense:** Stackelberg Adversarial Training enforcing temporal (Total Variation) and spectral (Power Spectral Density) physiological constraints.
+- **Defense:** Alignment-Based Adversarial Training (ABAT) utilizing a Stackelberg game formulation, enforcing temporal (Total Variation) and spectral (Power Spectral Density) constraints.
 - **Compression:** Knowledge Distilled student weights for high-throughput edge deployment.
 
 ### 2. FastAPI Backend (`/fanplay-iot-fan-neuro/backend`)
